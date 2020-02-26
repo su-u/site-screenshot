@@ -3,9 +3,9 @@
     {
       "name": "slack",
       "urls": [
-        "https://slack.com/intl/ja-jp/",
-        "https://slack.com/intl/ja-jp/features"
-      ]
+      "https://slack.com/intl/ja-jp/",
+      "https://slack.com/intl/ja-jp/features"
+    ]
     },
     {
       "name": "note",
