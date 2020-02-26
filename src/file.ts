@@ -1,3 +1,4 @@
+// @ts-ignore
 import * as fs from "fs";
 
 export const checkDir = (dir: string) =>{
@@ -10,4 +11,10 @@ export const checkDir = (dir: string) =>{
       }
     }
   });
+};
+
+export const readUrls = (fileName: string): string[] => {
+  const text = fs.readFileSync(fileName, 'utf8');
+  const lines = text.toString().split('¥n');
+  return lines;
 };

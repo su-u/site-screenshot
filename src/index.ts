@@ -1,14 +1,14 @@
 import puppeteer from 'puppeteer';
 import urlToFileName from '@/urlToFileName';
-import { checkDir } from '@/file';
+import { checkDir, readUrls } from '@/file';
 import { saveScreenShot, DeviceType } from '@/saveScreenShot';
 
-const screenShotList: string[] = [
-  'https://slack.com/intl/ja-jp/',
-  'https://slack.com/intl/ja-jp/features',
-  'https://slack.com/intl/ja-jp/why/slack-vs-email',
-  'https://slack.com/intl/ja-jp/customer-stories'
-];
+// const screenShotList: string[] = [
+//   'https://slack.com/intl/ja-jp/',
+//   'https://slack.com/intl/ja-jp/features',
+//   'https://slack.com/intl/ja-jp/why/slack-vs-email',
+//   'https://slack.com/intl/ja-jp/customer-stories'
+// ];
 
 const deviceList: DeviceType[] = [
   DeviceType.PC_2K,
@@ -27,7 +27,7 @@ const main = async () => {
         throw e;
       });
     await Promise.all([
-      ...screenShotList.map(async url => {
+      ...screenShotList.map(async (url: string) => {
         await Promise.all([
           ...deviceList.map(async deviceType => {
             await saveScreenShot(browser, url, deviceType, urlToFileName(url));
@@ -42,6 +42,7 @@ const main = async () => {
   }
 };
 
+const screenShotList = readUrls('urls.txt');
 console.log(`access count ${screenShotList.length * deviceList.length}`)
 checkDir('img');
 main();
