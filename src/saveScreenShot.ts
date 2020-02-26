@@ -19,7 +19,7 @@ export const saveScreenShot = async (browser: puppeteer.Browser,
       break;
   }
 
-  await page.goto(url);
+  await page.goto(url,  {waitUntil: 'load', timeout: 0});
   const title = await page.title();
   const fileTitle = rename(title)
   console.log(`save screenshot[${deviceType}]: ${fileTitle}`);
