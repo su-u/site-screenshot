@@ -1,6 +1,5 @@
 import puppeteer from 'puppeteer';
 import path from 'path';
-import urlToFileName from '@/urlToFileName';
 import { checkDir, readUrls } from '@/file';
 import { saveScreenShot, DeviceType } from '@/saveScreenShot';
 import data from './data.json';
@@ -9,9 +8,9 @@ import crypto from 'crypto';
 
 const deviceList: DeviceType[] = [
   DeviceType.PC_2K,
-  // DeviceType.PC_4K,
+  DeviceType.PC_4K,
   DeviceType.SP,
-  // DeviceType.TABLET
+  DeviceType.TABLET
 ];
 
 const main = async () => {
