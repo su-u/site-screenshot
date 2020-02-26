@@ -6,6 +6,7 @@
     "strict": true,
     "esModuleInterop": true,
     "moduleResolution": "node",
+    "resolveJsonModule": true,
     "baseUrl": ".",
     "paths": {
       "@/*": ["src/*"]
@@ -13,6 +14,7 @@
   },
   "include": [
     "./src/*.ts",
-    "./src/**/*.ts"
-  ],
+    "./src/**/*.ts",
+    "./src/*.json"
+  ]
 }

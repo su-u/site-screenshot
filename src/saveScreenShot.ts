@@ -5,7 +5,11 @@ import { checkDir } from '@/file';
 
 type fileNameType = 'url' | 'title'
 
-export const saveScreenShot = async (browser: puppeteer.Browser, url: string, deviceType: DeviceType, fileName: string, fileNameType: fileNameType = 'url') => {
+export const saveScreenShot = async (browser: puppeteer.Browser,
+                                     url: string,
+                                     deviceType: DeviceType,
+                                     filePath: string,
+                                     fileNameType: fileNameType = 'url') => {
   const page = await browser.newPage();
   switch(deviceType){
     case DeviceType.PC_2K:
@@ -20,9 +24,6 @@ export const saveScreenShot = async (browser: puppeteer.Browser, url: string, de
   }
 
   await page.goto(url);
-  const dir = path.join('img', deviceType.replace(new RegExp(' '), '_'));
-  checkDir(dir);
-  const filePath = path.join(dir, fileName);
   console.log(`save screenshot[${deviceType}]: ${filePath}`);
   await page.screenshot({path: `${filePath}.png`, fullPage: true});
   await page.close();
