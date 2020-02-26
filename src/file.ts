@@ -18,3 +18,7 @@ export const readUrls = (fileName: string): string[] => {
   const lines = text.toString().split('¥n');
   return lines;
 };
+
+export const rename = (fileName: string) => {
+  return fileName.replace(/[\.\"\,\\\/\=\[\]\:\;\|\s]/g,'');
+};

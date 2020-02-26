@@ -1,9 +1,11 @@
 import puppeteer from 'puppeteer';
+import path from 'path';
 import urlToFileName from '@/urlToFileName';
 import { checkDir, readUrls } from '@/file';
 import { saveScreenShot, DeviceType } from '@/saveScreenShot';
 import data from './data.json';
-import path from 'path';
+import crypto from 'crypto';
+
 
 const deviceList: DeviceType[] = [
   DeviceType.PC_2K,
@@ -30,17 +32,20 @@ const main = async () => {
       ...data.sites.map(async site => {
         const siteDir = path.join('img', site.name);
         checkDir(siteDir);
-        // URLごとのループ
+        const dateDir = path.join(siteDir, date);
+        checkDir(dateDir);
+        // デバイスごとのループ
         await Promise.all([
-          ...site.urls.map(async (url: string) => {
-            const dateDir = path.join(siteDir, date);
-            checkDir(dateDir);
-            // デバイスごとのループ
+          ...deviceList.map(async deviceType => {
+            const deviceDir = path.join(dateDir, deviceType.replace(/\s/g, '_'));
+            checkDir(deviceDir);
+            // URLごとのループ
             await Promise.all([
-              ...deviceList.map(async deviceType => {
-                const deviceDir = path.join(dateDir, deviceType);
-                checkDir(deviceDir);
-                const filePath = path.join(deviceDir, urlToFileName(url));
+              ...site.urls.map(async (url: string) => {
+                const shaSum = crypto.createHash('sha1');
+                shaSum.update(url);
+                const hash = shaSum.digest('hex');
+                const filePath = path.join(deviceDir, hash.slice(0, 10));
                 console.log(filePath);
                 await saveScreenShot(browser, url, deviceType, filePath);
               }),

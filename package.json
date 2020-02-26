@@ -29,6 +29,7 @@
     "webpack-node-externals": "^1.7.2"
   },
   "dependencies": {
+    "crypto": "^1.0.1",
     "puppeteer": "^2.1.1"
   }
 }

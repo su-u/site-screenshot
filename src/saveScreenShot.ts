@@ -1,15 +1,11 @@
 import puppeteer from 'puppeteer';
 import devices from "puppeteer/DeviceDescriptors";
-import path from 'path';
-import { checkDir } from '@/file';
-
-type fileNameType = 'url' | 'title'
+import { rename } from '@/file';
 
 export const saveScreenShot = async (browser: puppeteer.Browser,
                                      url: string,
                                      deviceType: DeviceType,
-                                     filePath: string,
-                                     fileNameType: fileNameType = 'url') => {
+                                     filePath: string) => {
   const page = await browser.newPage();
   switch(deviceType){
     case DeviceType.PC_2K:
@@ -24,8 +20,10 @@ export const saveScreenShot = async (browser: puppeteer.Browser,
   }
 
   await page.goto(url);
-  console.log(`save screenshot[${deviceType}]: ${filePath}`);
-  await page.screenshot({path: `${filePath}.png`, fullPage: true});
+  const title = await page.title();
+  const fileTitle = rename(title)
+  console.log(`save screenshot[${deviceType}]: ${fileTitle}`);
+  await page.screenshot({path: `${filePath}-${fileTitle}.png`, fullPage: true});
   await page.close();
 };
 
