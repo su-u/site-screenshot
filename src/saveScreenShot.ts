@@ -1,6 +1,7 @@
 import puppeteer from 'puppeteer';
 import devices from "puppeteer/DeviceDescriptors";
 import { rename } from '@/file';
+import * as fs from "fs";
 
 export const saveScreenShot = async (browser: puppeteer.Browser,
                                      url: string,
@@ -21,7 +22,14 @@ export const saveScreenShot = async (browser: puppeteer.Browser,
 
   await page.goto(url,  {waitUntil: 'load', timeout: 0});
   const title = await page.title();
-  const fileTitle = rename(title)
+  const fileTitle = rename(title);
+
+  if(fs.existsSync(`${filePath}-${fileTitle}.png`)){
+    console.log(`skip: ${filePath}-${fileTitle}.png`);
+    await page.close();
+    return;
+  }
+
   console.log(`save screenshot[${deviceType}]: ${fileTitle}`);
   await page.screenshot({path: `${filePath}-${fileTitle}.png`, fullPage: true});
   await page.close();
