@@ -4,15 +4,17 @@ import { checkDir } from '@/file';
 import { saveScreenShot, DeviceType } from '@/saveScreenShot';
 
 const screenShotList: string[] = [
-  'https://www.te-nu.com/entry/2017/12/02/225022',
-  'https://techblog.gmo-ap.jp/2018/12/28/puppeteer%E3%81%A7%E3%81%A7%E3%81%8D%E3%82%8B%E3%81%93%E3%81%A8%E3%81%BE%E3%81%A8%E3%82%81/'
+  'https://slack.com/intl/ja-jp/',
+  'https://slack.com/intl/ja-jp/features',
+  'https://slack.com/intl/ja-jp/why/slack-vs-email',
+  'https://slack.com/intl/ja-jp/customer-stories'
 ];
 
 const deviceList: DeviceType[] = [
   DeviceType.PC_2K,
-  DeviceType.PC_4K,
+  // DeviceType.PC_4K,
   DeviceType.SP,
-  DeviceType.TABLET
+  // DeviceType.TABLET
 ];
 
 const main = async () => {
@@ -40,5 +42,6 @@ const main = async () => {
   }
 };
 
-main();
+console.log(`access count ${screenShotList.length * deviceList.length}`)
 checkDir('img');
+main();

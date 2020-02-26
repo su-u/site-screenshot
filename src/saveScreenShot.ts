@@ -3,7 +3,9 @@ import devices from "puppeteer/DeviceDescriptors";
 import path from 'path';
 import { checkDir } from '@/file';
 
-export const saveScreenShot = async (browser: puppeteer.Browser, url: string, deviceType: DeviceType, fileName: string) => {
+type fileNameType = 'url' | 'title'
+
+export const saveScreenShot = async (browser: puppeteer.Browser, url: string, deviceType: DeviceType, fileName: string, fileNameType: fileNameType = 'url') => {
   const page = await browser.newPage();
   switch(deviceType){
     case DeviceType.PC_2K:
@@ -12,12 +14,8 @@ export const saveScreenShot = async (browser: puppeteer.Browser, url: string, de
     case DeviceType.PC_4K:
       await page.setViewport({width: 3840, height: 2160});
       break;
-    case DeviceType.SP:
-    case DeviceType.TABLET:
-      await page.emulate(devices[deviceType]);
-      break;
     default:
-      await page.setViewport({width: 1920, height: 1080});
+      await page.emulate(devices[deviceType]);
       break;
   }
 
