@@ -8,19 +8,27 @@
     "tsc": "tsc",
     "build": "webpack --config webpack.config.js",
     "watch": "yarn run build --watch",
-    "devwatch": "nodemon build/index.js"
+    "devwatch": "nodemon build/index.js",
+    "tswatch": "ts-node --files -r tsconfig-paths/register src/index.ts"
   },
   "devDependencies": {
     "@types/log4js": "^2.3.5",
-    "@types/node": "^13.7.0",
+    "@types/node": "^13.7.6",
+    "@types/puppeteer": "^2.0.1",
     "log4js": "^6.1.1",
     "log4js-extend": "^0.2.1",
     "nodemon": "^2.0.2",
     "ts-loader": "^6.2.1",
+    "ts-node": "^8.6.2",
+    "ts-node-dev": "^1.0.0-pre.44",
+    "tsconfig-paths": "^3.9.0",
     "tsconfig-paths-webpack-plugin": "^3.2.0",
+    "typescript": "^3.7.5",
     "webpack": "^4.41.5",
     "webpack-cli": "^3.3.10",
-    "webpack-node-externals": "^1.7.2",
-    "typescript": "^3.7.5"
+    "webpack-node-externals": "^1.7.2"
+  },
+  "dependencies": {
+    "puppeteer": "^2.1.1"
   }
 }
