@@ -1,0 +1,26 @@
+{
+  "name": "typescript-template",
+  "version": "1.0.0",
+  "main": "build/index.js",
+  "author": "すー <aaaiiiuuu35@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "tsc": "tsc",
+    "build": "webpack --config webpack.config.js",
+    "watch": "yarn run build --watch",
+    "devwatch": "nodemon build/index.js"
+  },
+  "devDependencies": {
+    "@types/log4js": "^2.3.5",
+    "@types/node": "^13.7.0",
+    "log4js": "^6.1.1",
+    "log4js-extend": "^0.2.1",
+    "nodemon": "^2.0.2",
+    "ts-loader": "^6.2.1",
+    "tsconfig-paths-webpack-plugin": "^3.2.0",
+    "webpack": "^4.41.5",
+    "webpack-cli": "^3.3.10",
+    "webpack-node-externals": "^1.7.2",
+    "typescript": "^3.7.5"
+  }
+}
