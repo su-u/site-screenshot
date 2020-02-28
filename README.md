@@ -7,10 +7,8 @@ src/data.json
 ```
 
 にて取得するサイトを指定します。
-すべてのURLに対して指定のデバイスでのimgを保存します。
 
-出力後は
 ```
-yarn run ejs
+yarn run exec
 ```
-を実行し`out.json`から`index.html`を生成できます。
+にてすべてのサイトを取得し、`docs`に`index.html`を出力します。
