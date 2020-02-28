@@ -4,13 +4,33 @@
       "name": "slack",
       "urls": [
         "https://slack.com/intl/ja-jp/",
-        "https://slack.com/intl/ja-jp/features"
+        "https://slack.com/intl/ja-jp/features",
+        "https://slack.com/intl/ja-jp/why/slack-vs-email",
+        "https://slack.com/intl/ja-jp/security",
+        "https://slack.com/intl/ja-jp/customer-stories?geocode=ja-jp",
+        "https://slack.com/intl/ja-jp/solutions/engineering",
+        "https://slack.com/intl/ja-jp/solutions/financial-services",
+        "https://slack.com/intl/ja-jp/solutions/sales",
+        "https://slack.com/intl/ja-jp/solutions/information-technology",
+        "https://slack.com/intl/ja-jp/solutions/marketing",
+        "https://slack.com/intl/ja-jp/solutions/customer-support",
+        "https://slack.com/intl/ja-jp/solutions/human-resources",
+        "https://slack.com/intl/ja-jp/solutions/project-management",
+        "https://slack.com/intl/ja-jp/solutions/media",
+        "https://slack.com/intl/ja-jp/enterprise",
+        "https://slack.com/intl/ja-jp/pricing"
       ]
     },
     {
       "name": "note",
       "urls": [
         "https://note.com/premium"
+      ]
+    },
+    {
+      "name": "国税局",
+      "urls": [
+        "https://www.nta.go.jp/"
       ]
     }
   ]

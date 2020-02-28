@@ -5,16 +5,24 @@ import { saveScreenShot, DeviceType } from "@/saveScreenShot";
 import data from "./data.json";
 import crypto from "crypto";
 
+const sleep = async (delay: number) => {
+  return new Promise(resolve => setTimeout(resolve, delay));
+};
+
+const getRandomInt = (max: number) => {
+  return Math.floor(Math.random() * Math.floor(max));
+};
+
 const deviceList: DeviceType[] = [
   DeviceType.PC_2K,
-  DeviceType.PC_4K,
+  // DeviceType.PC_4K,
   DeviceType.SP,
-  DeviceType.TABLET
+  // DeviceType.TABLET
 ];
 
 const main = async () => {
   const urlCount = data.sites.reduce((p, x) => p + x.urls.length, 0);
-  console.log(`urls: ${urlCount * deviceList.length}`);
+  console.log(`urls: ${urlCount } * ${deviceList.length}`);
   const nowDate = new Date();
   const date = `${nowDate.getFullYear()}-${nowDate.getMonth() + 1}-${nowDate.getDate()}`;
   try {
@@ -36,13 +44,14 @@ const main = async () => {
         // URL
         await Promise.all([
           ...site.urls.map(async (url: string) => {
-            const page = await browser.newPage();
-            await page.goto(url, { waitUntil: "load", timeout: 0 });
-            const title = await page.title();
-            const fileTitle = rename(title);
             // デバイスごとのループ
             await Promise.all([
               ...deviceList.map(async deviceType => {
+                const page = await browser.newPage();
+                await sleep(getRandomInt(10));
+                await page.goto(url, { waitUntil: "load", timeout: 0 });
+                const title = await page.title();
+                const fileTitle = rename(title);
                 const deviceDir = path.join(
                   dateDir,
                   deviceType.replace(/\s/g, "_")
@@ -59,9 +68,9 @@ const main = async () => {
                   console.error(url);
                   console.error(err);
                 }
+                await page.close();
               })
             ]);
-            await page.close();
           })
         ]);
       })
@@ -76,6 +85,6 @@ const main = async () => {
 checkDir("docs");
 checkDir(path.join("docs", "img"));
 main().then(() => {
-  out();
+  // out();
 });
 // out();
