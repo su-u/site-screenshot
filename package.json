@@ -9,8 +9,9 @@
     "build": "webpack --config webpack.config.js",
     "watch": "yarn run build --watch",
     "devwatch": "nodemon build/index.js",
-    "tswatch": "ts-node --files -r tsconfig-paths/register src/index.ts",
-    "ejs": "gulp ejs"
+    "tsbuild": "ts-node --files -r tsconfig-paths/register src/index.ts",
+    "ejs": "gulp ejs",
+    "exec": "yarn run tsbuild && yarn run ejs"
   },
   "devDependencies": {
     "@types/log4js": "^2.3.5",
