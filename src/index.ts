@@ -1,6 +1,6 @@
 import puppeteer from 'puppeteer';
 import path from 'path';
-import { checkDir, readUrls } from '@/file';
+import {checkDir, readUrls, rename} from '@/file';
 import { saveScreenShot, DeviceType } from '@/saveScreenShot';
 import data from './data.json';
 import crypto from 'crypto';
@@ -22,7 +22,7 @@ const main = async () => {
     const browser = await puppeteer
       .launch({
         args: ['--no-sandbox', '--disable-setuid-sandbox'],
-        // headless: false,
+        headless: false,
       })
       .catch((e: any) => {
         throw e;
@@ -34,22 +34,26 @@ const main = async () => {
         checkDir(siteDir);
         const dateDir = path.join(siteDir, date);
         checkDir(dateDir);
-        // デバイスごとのループ
+        // URL
         await Promise.all([
-          ...deviceList.map(async deviceType => {
-            const deviceDir = path.join(dateDir, deviceType.replace(/\s/g, '_'));
-            checkDir(deviceDir);
-            // URLごとのループ
+          ...site.urls.map(async (url: string) => {
+            const page = await browser.newPage();
+            await page.goto(url, {waitUntil: 'domcontentloaded', timeout: 0});
+            const title = await page.title();
+            const fileTitle = rename(title);
+            // デバイスごとのループ
             await Promise.all([
-              ...site.urls.map(async (url: string) => {
+              ...deviceList.map(async deviceType => {
+                const deviceDir = path.join(dateDir, deviceType.replace(/\s/g, '_'));
+                checkDir(deviceDir);
                 const shaSum = crypto.createHash('sha1');
                 shaSum.update(url);
                 const hash = shaSum.digest('hex');
                 const filePath = path.join(deviceDir, hash.slice(0, 10));
-                console.log(filePath);
-                await saveScreenShot(browser, url, deviceType, filePath);
+                await saveScreenShot(page, deviceType, fileTitle, filePath);
               }),
             ]);
+            await page.close();
           }),
         ]);
       })
