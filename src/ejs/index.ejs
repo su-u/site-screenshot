@@ -2,26 +2,26 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <title>ejs-test</title>
+    <title>サイト集</title>
 </head>
 <body>
-    <% children.forEach(function (site, key) { %>
-        <h2><%= site.name %></h2>
-        <ul>
+<% children.forEach(function (site, key) { %>
+    <h2><%= site.name %></h2>
+    <ul>
         <% site.children.forEach(function (device, key) { %>
             <li><%= device.name %></li>
             <ul>
-            <% device.children.forEach(function (date, key) { %>
-                <li><%= date.name %></li>
-                <ul>
-                <% date.children.forEach(function (file, key) { %>
-                    <li><a href="<%- `img/${site.name}/${device.name}/${date.name}/${file.file}` %>"><%= file.file %></a></li>
+                <% device.children.forEach(function (date, key) { %>
+                    <li><%= date.name %></li>
+                    <ul>
+                        <% date.children.forEach(function (file, key) { %>
+                            <li><a href="<%- `img/${site.name}/${device.name}/${date.name}/${file.file}` %>"><%= file.file %></a></li>
+                        <% }); %>
+                    </ul>
                 <% }); %>
-                </ul>
-            <% }); %>
             </ul>
         <% }); %>
-        </ul>
-    <% }); %>
+    </ul>
+<% }); %>
 </body>
 </html>
