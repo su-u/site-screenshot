@@ -1,6 +1,5 @@
 import puppeteer from 'puppeteer';
 import devices from "puppeteer/DeviceDescriptors";
-import { rename } from '@/file';
 import * as fs from "fs";
 
 export const saveScreenShot = async (page: puppeteer.Page,
@@ -17,16 +16,16 @@ export const saveScreenShot = async (page: puppeteer.Page,
     default:
       await page.emulate(devices[deviceType]);
       break;
-  }
+}
 
 
-  if(fs.existsSync(`${filePath}-${fileTitle}.png`)){
-    console.log(`skip: ${filePath}-${fileTitle}.png`);
-    return;
-  }
+if(fs.existsSync(`${filePath}-${fileTitle}.png`)){
+  console.log(`skip: ${filePath}-${fileTitle}.png`);
+  return;
+}
 
-  console.log(`save screenshot[${deviceType}]: ${fileTitle}`);
-  await page.screenshot({path: `${filePath}-${fileTitle}.png`, fullPage: true});
+console.log(`save screenshot[${deviceType}]: ${fileTitle}`);
+await page.screenshot({path: `${filePath}-${fileTitle}.png`, fullPage: true});
 };
 
 export enum DeviceType {

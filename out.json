@@ -1,0 +1,114 @@
+{
+  "name": "root",
+  "children": [
+    {
+      "name": "note",
+      "children": [
+        {
+          "name": "2020-2-28",
+          "children": [
+            {
+              "name": "2K",
+              "children": [
+                {
+                  "file": "8642c4d86b-note――つくる、つながる、とどける。.png",
+                  "size": 37710
+                },
+                { "file": "8642c4d86b-プレミアム会員｜note.png", "size": 63312 }
+              ]
+            },
+            {
+              "name": "4K",
+              "children": [
+                {
+                  "file": "8642c4d86b-note――つくる、つながる、とどける。.png",
+                  "size": 602481
+                },
+                {
+                  "file": "8642c4d86b-プレミアム会員｜note.png",
+                  "size": 602481
+                }
+              ]
+            },
+            {
+              "name": "iPad_Pro",
+              "children": [
+                {
+                  "file": "8642c4d86b-note――つくる、つながる、とどける。.png",
+                  "size": 602481
+                },
+                {
+                  "file": "8642c4d86b-プレミアム会員｜note.png",
+                  "size": 602481
+                }
+              ]
+            },
+            {
+              "name": "iPhone_X",
+              "children": [
+                {
+                  "file": "8642c4d86b-note――つくる、つながる、とどける。.png",
+                  "size": 602481
+                },
+                {
+                  "file": "8642c4d86b-プレミアム会員｜note.png",
+                  "size": 602481
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "slack",
+      "children": [
+        {
+          "name": "2020-2-28",
+          "children": [
+            {
+              "name": "2K",
+              "children": [
+                { "file": "0ce1194b35-機能Slack.png", "size": 3269286 },
+                {
+                  "file": "981c26e1aa-その仕事、Slackで。Slack.png",
+                  "size": 4144038
+                }
+              ]
+            },
+            {
+              "name": "4K",
+              "children": [
+                { "file": "0ce1194b35-機能Slack.png", "size": 3269286 },
+                {
+                  "file": "981c26e1aa-その仕事、Slackで。Slack.png",
+                  "size": 4144038
+                }
+              ]
+            },
+            {
+              "name": "iPad_Pro",
+              "children": [
+                { "file": "0ce1194b35-機能Slack.png", "size": 3269286 },
+                {
+                  "file": "981c26e1aa-その仕事、Slackで。Slack.png",
+                  "size": 4144038
+                }
+              ]
+            },
+            {
+              "name": "iPhone_X",
+              "children": [
+                { "file": "0ce1194b35-機能Slack.png", "size": 3269286 },
+                {
+                  "file": "981c26e1aa-その仕事、Slackで。Slack.png",
+                  "size": 4144038
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

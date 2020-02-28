@@ -1,8 +1,7 @@
 const gulp = require("gulp");
 const ejs = require("gulp-ejs");
 const fs = require('fs');
-var rename = require('gulp-rename');
-
+const rename = require('gulp-rename');
 gulp.task('ejs', function(callback){
     // JSONファイル読み込み
     const json = JSON.parse(fs.readFileSync('./src/data.json'));
