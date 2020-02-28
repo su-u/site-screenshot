@@ -48,7 +48,7 @@ const main = async () => {
             await Promise.all([
               ...deviceList.map(async deviceType => {
                 const page = await browser.newPage();
-                await sleep(getRandomInt(10));
+                await sleep(getRandomInt(10000));
                 await page.goto(url, { waitUntil: "load", timeout: 0 });
                 const title = await page.title();
                 const fileTitle = rename(title);
