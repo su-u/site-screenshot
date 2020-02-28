@@ -50,7 +50,7 @@ const walk = function(p: any, callback: any) {
   });
 };
 
-const dir = "./dist/img";
+const dir = "./docs/img";
 export const out = () => {
   walk(dir, function (err: any, results: any) {
     if (err) throw err;

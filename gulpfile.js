@@ -8,6 +8,6 @@ gulp.task('ejs', function(callback){
     gulp.src('src/ejs/*.ejs')
         .pipe(ejs(json,{"ext": ".html"}))
         .pipe(rename("index.html"))
-        .pipe(gulp.dest('./dist'));
+        .pipe(gulp.dest('./docs'));
     callback();
 });

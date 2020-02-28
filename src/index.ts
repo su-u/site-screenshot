@@ -16,8 +16,7 @@ const main = async () => {
   const urlCount = data.sites.reduce((p, x) => p + x.urls.length, 0);
   console.log(`urls: ${urlCount * deviceList.length}`);
   const nowDate = new Date();
-  const date = `${nowDate.getFullYear()}-${nowDate.getMonth() +
-    1}-${nowDate.getDate()}`;
+  const date = `${nowDate.getFullYear()}-${nowDate.getMonth() + 1}-${nowDate.getDate()}`;
   try {
     const browser = await puppeteer
       .launch({
@@ -30,7 +29,7 @@ const main = async () => {
     // siteごとのループ
     await Promise.all([
       ...data.sites.map(async site => {
-        const siteDir = path.join(path.join("dist", "img"), site.name);
+        const siteDir = path.join(path.join("docs", "img"), site.name);
         checkDir(siteDir);
         const dateDir = path.join(siteDir, date);
         checkDir(dateDir);
@@ -38,7 +37,7 @@ const main = async () => {
         await Promise.all([
           ...site.urls.map(async (url: string) => {
             const page = await browser.newPage();
-            await page.goto(url, { waitUntil: "domcontentloaded", timeout: 0 });
+            await page.goto(url, { waitUntil: "load", timeout: 0 });
             const title = await page.title();
             const fileTitle = rename(title);
             // デバイスごとのループ
@@ -74,8 +73,8 @@ const main = async () => {
   }
 };
 
-checkDir("dist");
-checkDir(path.join("dist", "img"));
+checkDir("docs");
+checkDir(path.join("docs", "img"));
 main().then(() => {
   out();
 });
