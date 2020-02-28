@@ -32,6 +32,16 @@
       "urls": [
         "https://www.nta.go.jp/"
       ]
+    },
+    {
+      "name": "twist",
+      "urls": [
+        "https://twist.com/",
+        "https://twist.com/tour",
+        "https://twist.com/why-twist",
+        "https://twist.com/slack-alternative",
+        "https://twist.com/pricing"
+      ]
     }
   ]
 }
