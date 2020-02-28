@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>ejs-test</title>
+</head>
+<body>
+    <% sites.forEach(function (value, key) { %>
+        <h1><%= value.name %></h1>
+        <% value.urls.forEach(function (value, key) { %>
+            <p><a href="<%= value %>"><%= value %></a></p>
+        <% }); %>
+    <% }); %>
+</body>
+</html>
