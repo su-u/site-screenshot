@@ -1,5 +1,6 @@
 // @ts-ignore
 import * as fs from "fs";
+const path = require("path");
 
 export const checkDir = (dir: string) => {
   fs.access(dir, fs.constants.R_OK | fs.constants.W_OK, error => {
@@ -17,10 +18,7 @@ export const rename = (fileName: string) => {
   return fileName.replace(/[\.\"\,\\\/\=\[\]\:\;\|\s]/g, "");
 };
 
-const path = require("path");
-const dir = "../dist/img";
-
-export const walk = function(p: any, callback: any) {
+const walk = function(p: any, callback: any) {
   let results: any = [];
 
   fs.readdir(p, function(err, files) {
@@ -49,5 +47,15 @@ export const walk = function(p: any, callback: any) {
         results.push({ file: path.basename(file), size: stat.size });
         if (!--pending) callback(null, results);
       });
+  });
+};
+
+const dir = "./dist/img";
+export const out = () => {
+  walk(dir, function (err: any, results: any) {
+    if (err) throw err;
+    const data = {name: "root", children: results};
+    console.log(JSON.stringify(data)); //一覧出力
+    fs.writeFileSync('./out.json', JSON.stringify(data));
   });
 };

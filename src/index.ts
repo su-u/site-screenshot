@@ -1,6 +1,6 @@
 import puppeteer from "puppeteer";
 import path from "path";
-import { checkDir, rename, walk } from "@/file";
+import { checkDir, rename, out } from "@/file";
 import { saveScreenShot, DeviceType } from "@/saveScreenShot";
 import data from "./data.json";
 import crypto from "crypto";
@@ -77,10 +77,6 @@ const main = async () => {
 checkDir("dist");
 checkDir(path.join("dist", "img"));
 main().then(() => {
-  const dir = "./dist/img";
-  walk(dir, function(err: any, results: any) {
-    if (err) throw err;
-    const data = { name: "root", children: results };
-    console.log(JSON.stringify(data)); //一覧出力
-  });
+  out();
 });
+// out();
