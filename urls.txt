@@ -1,1 +1,0 @@
-https://www.tech-tech.xyz/nodejs-readfile-readfilesync.html
